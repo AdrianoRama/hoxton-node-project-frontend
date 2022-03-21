@@ -12,7 +12,7 @@ import Login from './container/Login/Login'
 import WholeMenu from './container/WholeMenu/WholeMenu'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
@@ -31,7 +31,7 @@ function App() {
         <Route path='/log-in' element={<Login />} />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
