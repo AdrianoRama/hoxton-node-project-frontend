@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import SubHeading from '../../components/SubHeading/SubHeading';
 import images from '../../constants/images'
 
@@ -15,7 +16,7 @@ export default function Header() {
           classic British & Russian menu to an eclectic clientele
           in London’s most glamorous all-booth dining room.
         </p>
-        <button type='button' className='custom__button'>VIEW MENU</button>
+        <button type='button' className='custom__button'><NavLink to={`/menu`}> VIEW MENU </NavLink></button>
       </div>
 
       <div className="app__wrapper_img">

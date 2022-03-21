@@ -12,6 +12,7 @@ import welcome from '../assets/welcome.jpg';
 import findus from '../assets/findus.jpg';
 import quote from '../assets/quote.png';
 import gericht from '../assets/gericht.svg';
+import wholeMenu from '../assets/wholeMenu.gif'
 
 export default {
   bg,
@@ -28,4 +29,5 @@ export default {
   findus,
   quote,
   gericht,
+  wholeMenu
 };

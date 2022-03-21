@@ -9,6 +9,7 @@ import Header from './container/Header/Header'
 import SpecialMenu from './container/Menu/SpecialMenu'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Login from './container/Login/Login'
+import WholeMenu from './container/WholeMenu/WholeMenu'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,7 @@ function App() {
         <Route path='/soho' element={<Header />} />
         <Route path='/about' element={<AboutUs />} />
         <Route path='/menu' element={<SpecialMenu />} />
+        <Route path='/wholemenu' element={<WholeMenu />} />
         <Route path='/gallery' element={(<>
           <Interior />
           <Gallery />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import SubHeading from '../../components/SubHeading/SubHeading';
 import { images, data } from '../../constants'
 
@@ -65,7 +66,7 @@ export default function SpecialMenu() {
       </div>
 
       <div style={{ marginTop: '15px' }}>
-        <button type='button' className='custom__button'>View More</button>
+        <button type='button' className='custom__button'><NavLink to={`/wholemenu`}> VIEW MORE </NavLink></button>
       </div>
     </div>
   )
