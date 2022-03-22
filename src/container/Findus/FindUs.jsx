@@ -21,7 +21,9 @@ export default function FindUs() {
           <p className='p__opensans'>Saturday 12:00 – 00:00</p>
           <p className='p__opensans'>Sunday 12:00 – 00:00</p>
         </div>
-        <button className='custom__button' style={{ marginTop: '2rem' }}>Visit Us</button>
+        <a href="https://www.google.com/maps/place/Bob+Bob+Ricard+Soho/@51.51233,-0.1372525,15z/data=!4m5!3m4!1s0x0:0x483d43bdcad9b09a!8m2!3d51.51233!4d-0.1372525" target="_blank">
+          <button className='custom__button' style={{ marginTop: '2rem' }}>Visit Us</button>
+        </a>
       </div>
       <div className="app__wrapper_img">
         <img src={images.findus} alt="findus" />
