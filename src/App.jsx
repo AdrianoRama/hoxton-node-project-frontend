@@ -10,13 +10,16 @@ import SpecialMenu from './container/Menu/SpecialMenu'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Login from './container/Login/Login'
 import WholeMenu from './container/WholeMenu/WholeMenu'
+import Profile from './container/Profile/Profile'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState();
 
+
+  console.log(user)
   return (
     <div className="App">
-      <Navbar />
+      <Navbar user={user} />
       <Routes>
         <Route index element={<Navigate replace to='/soho' />} />
         <Route path='/soho' element={<Header />} />
@@ -28,7 +31,8 @@ function App() {
           <Gallery />
         </>)} />
         <Route path='/contact' element={<FindUs />} />
-        <Route path='/log-in' element={<Login />} />
+        <Route path='/profile' element={<Profile user={user} />} />
+        <Route path='/log-in' element={<Login setUser={setUser} user={user} />} />
       </Routes>
     </div>
   );
