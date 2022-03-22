@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SubHeading from '../../components/SubHeading/SubHeading';
-import { images, data } from '../../constants'
-
 import './SpecialMenu.css';
 
+
 export default function SpecialMenu() {
+
+  const [wines, setWines] = useState([])
+  const [champagnes, setChampagnes] = useState([])
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/wines`).then(resp => resp.json())
+      .then(winesFromServer => setWines(winesFromServer))
+  }, [])
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/champagnes`).then(resp => resp.json())
+      .then(champagnesFromServer => setChampagnes(champagnesFromServer))
+  }, [])
+
   return (
     <div className='app__specialMenu flex__center section__padding' id='menu'>
       <div className="app__specialMenu-title">
@@ -16,9 +29,9 @@ export default function SpecialMenu() {
         <div className="app__specialMenu-menu_wine flex__center">
           <div className="app__specialMenu_menu_items">
             <h1 style={{ color: 'white' }}>Wine</h1>
-            {data.wines.map((wine) => (
+            {wines.map((wine) => (
 
-              <div className="app__menuitem">
+              <div className="app__menuitem" key={wine.id}>
                 <div className="app__menuitem-head">
                   <div className="app__menuitem-name">
                     <p className="p__cormorant" style={{ color: '#DCCA87' }}>{wine.title}</p>
@@ -41,9 +54,9 @@ export default function SpecialMenu() {
         <div className="app__specialMenu-menu_champagne flex__center">
           <div className="app__specialMenu_menu_items">
             <h1 style={{ color: 'white' }}>Champagne</h1>
-            {data.champagnes.map((champagne) => (
+            {champagnes.map((champagne) => (
 
-              <div className="app__menuitem">
+              <div className="app__menuitem" key={champagne.id}>
                 <div className="app__menuitem-head">
                   <div className="app__menuitem-name">
                     <p className="p__cormorant" style={{ color: '#DCCA87' }}>{champagne.title}</p>
