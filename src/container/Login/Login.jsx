@@ -55,6 +55,7 @@ export default function Login({ setUser, user, users }) {
                         alert('Oops, something went wrong.')
                     } else {
                         localStorage.setItem('token', data.token)
+                        logIn(e)
                     }
                 })
         }
