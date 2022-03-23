@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import AboutUs from './container/AboutUs/AboutUs'
@@ -13,10 +13,16 @@ import WholeMenu from './container/WholeMenu/WholeMenu'
 import Profile from './container/Profile/Profile'
 
 function App() {
+  const [users, setUsers] = useState([])
   const [user, setUser] = useState();
 
 
-  console.log(user)
+  useEffect(() => {
+    fetch(`http://localhost:4000/users`).then(resp => resp.json())
+      .then(usersFromServer => setUsers(usersFromServer))
+  }, [])
+
+  console.log(users)
   return (
     <div className="App">
       <Navbar user={user} />
@@ -31,8 +37,8 @@ function App() {
           <Gallery />
         </>)} />
         <Route path='/contact' element={<FindUs />} />
-        <Route path='/profile' element={<Profile user={user} />} />
-        <Route path='/log-in' element={<Login setUser={setUser} user={user} />} />
+        <Route path='/profile' element={<Profile user={user} setUser={setUser} />} />
+        <Route path='/log-in' element={<Login setUser={setUser} user={user} users={users} />} />
       </Routes>
     </div>
   );

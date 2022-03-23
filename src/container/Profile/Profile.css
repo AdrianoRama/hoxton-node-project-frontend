@@ -12,7 +12,7 @@
     flex-direction: column;
    justify-content: center;  
    align-items: center;
-   gap: 1rem;
+   gap: 2rem;
 }
 
 .app__profile-user img {
@@ -23,4 +23,19 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    margin: 1rem;
+}
+
+.app__profile-reservation span {
+    margin-top: 1rem;
+}
+
+.app__profile button {
+    width: 10rem;
+    height: 2rem;
+    border-radius: .3rem;
+    font-size: 15px;
+    font-family: var(--font-base);
+    background: var(--color-golden);
+    margin-top: 3rem;
 }
