@@ -22,7 +22,6 @@ function App() {
       .then(usersFromServer => setUsers(usersFromServer))
   }, [])
 
-
   return (
     <div className="App">
       <Navbar user={user} />

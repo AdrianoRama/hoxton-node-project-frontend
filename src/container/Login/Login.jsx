@@ -37,10 +37,10 @@ export default function Login({ setUser, user, users }) {
         const email = e.target.email.value
         const password = e.target.password.value
 
-        const userEmail = users.map(user => user.email === email)
+        const userEmail = users.map(user => user.email)
         const emailInUse = 'Email is in use'
-
-        if (!userEmail) {
+        console.log(userEmail)
+        if (!userEmail.includes(email)) {
 
             fetch('http://localhost:4000/signup', {
                 method: 'POST',
