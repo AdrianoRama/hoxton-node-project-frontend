@@ -7,7 +7,7 @@ import FindUs from './container/Findus/FindUs'
 import Gallery from './container/Gallery/Gallery'
 import Header from './container/Header/Header'
 import SpecialMenu from './container/Menu/SpecialMenu'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import Login from './container/Login/Login'
 import WholeMenu from './container/WholeMenu/WholeMenu'
 import Profile from './container/Profile/Profile'
@@ -22,7 +22,7 @@ function App() {
       .then(usersFromServer => setUsers(usersFromServer))
   }, [])
 
-  console.log(users)
+
   return (
     <div className="App">
       <Navbar user={user} />

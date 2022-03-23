@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Login.css'
 
 export default function Login({ setUser, user, users }) {
@@ -59,6 +59,10 @@ export default function Login({ setUser, user, users }) {
                 })
         }
         else setEmailError(emailInUse)
+    }
+
+    if (user) {
+        navigate(`/soho`)
     }
 
     if (error) {
