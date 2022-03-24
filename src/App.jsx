@@ -11,11 +11,11 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import Login from './container/Login/Login'
 import WholeMenu from './container/WholeMenu/WholeMenu'
 import Profile from './container/Profile/Profile'
+import Book from './container/Book/Book'
 
 function App() {
   const [users, setUsers] = useState([])
   const [user, setUser] = useState();
-
 
   useEffect(() => {
     fetch(`http://localhost:4000/users`).then(resp => resp.json())
@@ -36,6 +36,7 @@ function App() {
           <Gallery />
         </>)} />
         <Route path='/contact' element={<FindUs />} />
+        <Route path='/book' element={<Book user={user} />} />
         <Route path='/profile' element={<Profile user={user} setUser={setUser} />} />
         <Route path='/log-in' element={<Login setUser={setUser} user={user} users={users} />} />
       </Routes>

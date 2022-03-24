@@ -5,8 +5,7 @@ import './Profile.css'
 
 export default function Profile({ user, setUser }) {
 
-    const time = user.reservations.map(reservation => reservation.time)
-    const date = user.reservations.map(reservation => reservation.date)
+    const dateAndTime = user.reservations.map(reservation => reservation.dateAndTime)
     const personsNumber = user.reservations.map(reservation => reservation.personsNumber)
 
     const navigate = useNavigate()
@@ -18,8 +17,7 @@ export default function Profile({ user, setUser }) {
                 <h1 className='headtext__cormorant'>Hello, {user.name}!</h1>
                 <div className="app__profile-reservation">
                     <h1>Your have {user.reservations.length} Reservations </h1>
-                    <span>Date: {date}</span>
-                    <span>Time: {time}</span>
+                    <span>Date & Time: {dateAndTime}</span>
                     <span>Number of Persons: {personsNumber}</span>
                 </div>
                 <button onClick={() => {
