@@ -24,6 +24,7 @@ export default function Profile({ user, setUser }) {
                 <button onClick={() => {
                     navigate(`/soho`)
                     setUser(undefined)
+                    localStorage.clear()
                 }}>Sign Out</button>
             </div>
         </div>
