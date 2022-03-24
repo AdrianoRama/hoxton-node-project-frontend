@@ -15,7 +15,7 @@ import Book from './container/Book/Book'
 
 function App() {
   const [users, setUsers] = useState([])
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(undefined);
 
   useEffect(() => {
     fetch(`http://localhost:4000/users`).then(resp => resp.json())
@@ -49,7 +49,7 @@ function App() {
           <Gallery />
         </>)} />
         <Route path='/contact' element={<FindUs />} />
-        <Route path='/book' element={<Book user={user} />} />
+        <Route path='/book' element={<Book user={user} setUser={setUser} />} />
         <Route path='/profile' element={<Profile user={user} setUser={setUser} />} />
         <Route path='/log-in' element={<Login setUser={setUser} user={user} users={users} />} />
       </Routes>

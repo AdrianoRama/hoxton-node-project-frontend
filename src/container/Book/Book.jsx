@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as dateFn from "date-fns";
 
 import "./Book.css";
 import { images } from "../../constants";
 
-export default function Book({ user }) {
+export default function Book({ user, setUser }) {
     const [date, setDate] = useState(() => {
         return new Date();
     });
@@ -13,7 +13,11 @@ export default function Book({ user }) {
 
     const [reservation, setReservation] = useState()
 
+    const [userReservations, setUserReservations] = useState(user.reservations);
+
+
     let newDate = String(date)
+
 
     function handleAddGuest() {
         setGuest(guest + 1);
@@ -62,9 +66,16 @@ export default function Book({ user }) {
                     console.log(data.error)
                 } else {
                     setReservation(data)
+                    setUserReservations([...userReservations, data])
                 }
             })
     }
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/user/${user.id}`).then(resp => resp.json())
+            .then(userFromServer => setUser(userFromServer))
+    }, [userReservations])
+
 
     if (!user) {
         return (
@@ -113,8 +124,8 @@ export default function Book({ user }) {
                             <button className="app__book-submit" type="submit" onClick={addReservation}>Submit</button>
                         </div>
                     </form>
-                </div>
-            </div>
+                </div >
+            </div >
         );
     }
 
