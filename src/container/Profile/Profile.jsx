@@ -16,8 +16,8 @@ export default function Profile({ user, setUser }) {
                     <h1>Your have {user.reservations.length} Reservations </h1>
                     {user.reservations.map(reservation => {
                         return <>
-                            <span>Date & Time: {reservation.dateAndTime}</span>
-                            <span>Number of Persons: {reservation.personsNumber}</span>
+                            <span key={reservation.id}>Date & Time: {reservation.dateAndTime}</span>
+                            <span key={reservation.id}>Number of Persons: {reservation.personsNumber}</span>
                         </>
                     })}
                 </div>

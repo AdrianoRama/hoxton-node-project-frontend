@@ -13,6 +13,8 @@ export default function Book({ user }) {
 
     const [reservation, setReservation] = useState()
 
+    console.log(reservation)
+
     let newDate = String(date)
 
     function handleAddGuest() {
@@ -61,7 +63,7 @@ export default function Book({ user }) {
                 if (data.error) {
                     console.log(data.error)
                 } else {
-                    setReservation(data.user)
+                    setReservation(data)
                 }
             })
     }
@@ -73,6 +75,49 @@ export default function Book({ user }) {
                     <h1 className="headtext__cormorant">Log In to Book a Table...</h1></div>
             </div>
         )
+    }
+
+    else if (reservation) {
+        return (
+            <div className="app__book" id="book">
+                <div className="app__book-container">
+                    <img src={images.gericht} alt="" />
+                    <p className="p__cormorant">Thank you for booking at our place</p>
+                    <form>
+                        <div className="app__book-reserve">
+                            <div className="app__book-date">
+                                Date {dateFn.format(date, "E, d MMM")}
+                                <button type="button" onClick={handleRemoveDay}>
+                                    -
+                                </button>
+                                <button type="button" onClick={handleAddDay}>
+                                    +
+                                </button>{" "}
+                            </div>
+                            <div className="app__book-persons" >
+                                Persons {guest}{" "}
+                                <button type="button" onClick={handleRemoveGuest}>
+                                    -
+                                </button>
+                                <button type="button" onClick={handleAddGuest}>
+                                    +
+                                </button>{" "}
+                            </div>
+                            <div className="app__book-time">
+                                Time {dateFn.format(date, "HH:mm")}
+                                <button type="button" onClick={handleRemoveHour}>
+                                    -
+                                </button>
+                                <button type="button" onClick={handleAddHour}>
+                                    +
+                                </button>{" "}
+                            </div>
+                            <button className="app__book-submit" type="submit" onClick={addReservation}>Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        );
     }
 
     return (
