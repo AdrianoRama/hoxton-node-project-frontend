@@ -11,6 +11,10 @@ export default function Book({ user }) {
 
     const [guest, setGuest] = useState(1);
 
+    const [reservation, setReservation] = useState()
+
+    let newDate = String(date)
+
     function handleAddGuest() {
         setGuest(guest + 1);
     };
@@ -42,6 +46,25 @@ export default function Book({ user }) {
             setDate(newDate);
         }
     };
+
+    function addReservation(e) {
+        e.preventDefault()
+        fetch('http://localhost:4000/reservation', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ dateAndTime: newDate, personsNumber: guest, userId: user.id })
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) {
+                    console.log(data.error)
+                } else {
+                    setReservation(data.user)
+                }
+            })
+    }
 
     if (!user) {
         return (
@@ -85,7 +108,7 @@ export default function Book({ user }) {
                                 +
                             </button>{" "}
                         </div>
-                        <button className="app__book-submit" type="submit">Submit</button>
+                        <button className="app__book-submit" type="submit" onClick={addReservation}>Submit</button>
                     </div>
                 </form>
             </div>
