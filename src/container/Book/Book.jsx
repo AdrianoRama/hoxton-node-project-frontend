@@ -13,8 +13,6 @@ export default function Book({ user }) {
 
     const [reservation, setReservation] = useState()
 
-    console.log(reservation)
-
     let newDate = String(date)
 
     function handleAddGuest() {
@@ -153,7 +151,7 @@ export default function Book({ user }) {
                                 +
                             </button>{" "}
                         </div>
-                        <button className="app__book-submit" type="submit" onClick={addReservation}>Submit</button>
+                        <button className="app__book-submit" type="submit" onClick={addReservation}>Book</button>
                     </div>
                 </form>
             </div>

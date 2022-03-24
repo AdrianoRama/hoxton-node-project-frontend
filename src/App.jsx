@@ -22,6 +22,19 @@ function App() {
       .then(usersFromServer => setUsers(usersFromServer))
   }, [])
 
+  useEffect(() => {
+    if (localStorage.token) {
+      fetch(`http://localhost:4000/validate`,
+        {
+          headers: {
+            'Authorization': localStorage.token
+          }
+        }
+      ).then(resp => resp.json())
+        .then(userFromServer => setUser(userFromServer))
+    }
+  }, [])
+
   return (
     <div className="App">
       <Navbar user={user} />
