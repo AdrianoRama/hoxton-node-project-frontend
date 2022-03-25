@@ -11,10 +11,9 @@ export default function Book({ user, setUser }) {
 
     const [guest, setGuest] = useState(1);
 
-    const [reservation, setReservation] = useState()
+    const [reservationDone, setReservationDone] = useState(false)
 
-    const [userReservations, setUserReservations] = useState(user.reservations);
-
+    // const [userReservations, setUserReservations] = useState(user?.reservations ?? []);
 
     let newDate = String(date)
 
@@ -65,16 +64,18 @@ export default function Book({ user, setUser }) {
                 if (data.error) {
                     console.log(data.error)
                 } else {
-                    setReservation(data)
-                    setUserReservations([...userReservations, data])
+                    setReservationDone(true)
+                    setUser({ ...user, reservations: [...user.reservations, data] })
                 }
             })
     }
 
     useEffect(() => {
-        fetch(`http://localhost:4000/user/${user.id}`).then(resp => resp.json())
-            .then(userFromServer => setUser(userFromServer))
-    }, [userReservations])
+        if (user) {
+            fetch(`http://localhost:4000/user/${user.id}`).then(resp => resp.json())
+                .then(userFromServer => setUser(userFromServer))
+        }
+    }, [user])
 
 
     if (!user) {
@@ -86,7 +87,7 @@ export default function Book({ user, setUser }) {
         )
     }
 
-    else if (reservation) {
+    else if (reservationDone) {
         return (
             <div className="app__book" id="book">
                 <div className="app__book-container">
